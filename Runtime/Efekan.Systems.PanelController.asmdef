@@ -1,6 +1,6 @@
 {
     "name": "Efekan.Systems.PanelController",
-    "rootNamespace": "",
+    "rootNamespace": "Efekan.Systems.PanelController",
     "references": [
         "GUID:bc2eae411a6ae534eafd4ca9afb97fda"
     ],
