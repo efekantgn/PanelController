@@ -1,0 +1,16 @@
+{
+    "name": "Efekan.Systems.PanelController",
+    "rootNamespace": "",
+    "references": [
+        "GUID:bc2eae411a6ae534eafd4ca9afb97fda"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

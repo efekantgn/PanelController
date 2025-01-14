@@ -1,0 +1,22 @@
+{
+    "name": "com.efekan.panelcontroller",
+    "version": "1.0.0",
+    "displayName": "Panel Controller",
+    "description": "Simple panel open close animations with DOTween.",
+    "unity": "2022.3",
+    "dependencies": {
+        "com.unity.textmeshpro": "3.0.9",
+        "com.demigiant.dotween": "https://github.com/Demigiant/dotween.git#upm"
+    },
+    "author": {
+        "name": "Efekan Tugan",
+        "email": "efekantgn@gmail.com"
+    },
+    "samples": [
+        {
+            "displayName": "Sample Scene",
+            "description": "Sample Scene for Panel Controller.",
+            "path": "Samples~"
+        }
+    ]
+}
