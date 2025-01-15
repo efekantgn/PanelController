@@ -1,8 +1,9 @@
 {
     "name": "Efekan.Systems.PanelController",
-    "rootNamespace": "Efekan.Systems.PanelController",
+    "rootNamespace": "",
     "references": [
-        "GUID:bc2eae411a6ae534eafd4ca9afb97fda"
+        "GUID:bc2eae411a6ae534eafd4ca9afb97fda",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

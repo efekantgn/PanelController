@@ -5,8 +5,7 @@
     "description": "Simple panel open close animations with DOTween.",
     "unity": "2022.3",
     "dependencies": {
-        "com.unity.textmeshpro": "3.0.9",
-        "com.demigiant.dotween": "1.2.765"
+        "com.unity.textmeshpro": "3.0.9"
     },
     "author": {
         "name": "Efekan Tugan",

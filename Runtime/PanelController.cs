@@ -1,46 +1,126 @@
 using UnityEngine;
 using DG.Tweening;
 using System;
+
 namespace Efekan.Systems.PanelController
 {
+    /// <summary>
+    /// A system to control the movement, scaling, and fading of a UI panel in Unity.
+    /// </summary>
     public class PanelController : MonoBehaviour
     {
-        [SerializeField] private RectTransform panel; // Kontrol edilecek UI paneli
-        [SerializeField] private CanvasGroup canvasGroup; // Alfa geçişleri için CanvasGroup
+        /// <summary>
+        /// The UI panel to be controlled.
+        /// </summary>
+        [SerializeField] private RectTransform panel;
 
+        /// <summary>
+        /// CanvasGroup used for alpha transitions.
+        /// </summary>
+        [SerializeField] private CanvasGroup canvasGroup;
+
+        /// <summary>
+        /// The panel's original position on the screen.
+        /// </summary>
         private Vector3 originalPosition;
+
+        /// <summary>
+        /// The position where the panel will move off-screen.
+        /// </summary>
         private Vector3 offScreenPosition;
 
+        /// <summary>
+        /// Duration for movement transitions in seconds.
+        /// </summary>
         public float MovementDuration = 0.5f;
+
+        /// <summary>
+        /// Duration for scaling transitions in seconds.
+        /// </summary>
         public float ScaleDuration = 0.5f;
+
+        /// <summary>
+        /// Duration for fading transitions in seconds.
+        /// </summary>
         public float FadeDuration = 0.5f;
 
-        // Aksiyonlar
-        public Action OnShowPanelStart;
-        public Action OnShowPanelComplete;
-        public Action OnHidePanelStart;
-        public Action OnHidePanelComplete;
-        public Action OnScaleInStart;
-        public Action OnScaleInComplete;
-        public Action OnScaleOutStart;
-        public Action OnScaleOutComplete;
-        public Action OnFadeInStart;
-        public Action OnFadeInComplete;
-        public Action OnFadeOutStart;
-        public Action OnFadeOutComplete;
+        // Action events
+
+        /// <summary>
+        /// Invoked when the panel starts showing.
+        /// </summary>
+        public event Action OnShowPanelStart;
+
+        /// <summary>
+        /// Invoked when the panel finishes showing.
+        /// </summary>
+        public event Action OnShowPanelComplete;
+
+        /// <summary>
+        /// Invoked when the panel starts hiding.
+        /// </summary>
+        public event Action OnHidePanelStart;
+
+        /// <summary>
+        /// Invoked when the panel finishes hiding.
+        /// </summary>
+        public event Action OnHidePanelComplete;
+
+        /// <summary>
+        /// Invoked when the panel starts scaling in.
+        /// </summary>
+        public event Action OnScaleInStart;
+
+        /// <summary>
+        /// Invoked when the panel finishes scaling in.
+        /// </summary>
+        public event Action OnScaleInComplete;
+
+        /// <summary>
+        /// Invoked when the panel starts scaling out.
+        /// </summary>
+        public event Action OnScaleOutStart;
+
+        /// <summary>
+        /// Invoked when the panel finishes scaling out.
+        /// </summary>
+        public event Action OnScaleOutComplete;
+
+        /// <summary>
+        /// Invoked when the panel starts fading in.
+        /// </summary>
+        public event Action OnFadeInStart;
+
+        /// <summary>
+        /// Invoked when the panel finishes fading in.
+        /// </summary>
+        public event Action OnFadeInComplete;
+
+        /// <summary>
+        /// Invoked when the panel starts fading out.
+        /// </summary>
+        public event Action OnFadeOutStart;
+
+        /// <summary>
+        /// Invoked when the panel finishes fading out.
+        /// </summary>
+        public event Action OnFadeOutComplete;
 
         private void Awake()
         {
             if (canvasGroup == null) canvasGroup = gameObject.AddComponent<CanvasGroup>();
             if (panel == null) panel = GetComponent<RectTransform>();
 
-            // Panelin orijinal pozisyonunu kaydet
+            // Store the panel's original position.
             originalPosition = panel.anchoredPosition;
 
-            // Panelin ekrandan dışarı çıkacağı pozisyonu hesapla
+            // Calculate the position where the panel will move off-screen.
             offScreenPosition = new Vector3(originalPosition.x, originalPosition.y + Screen.height, 0);
         }
 
+        /// <summary>
+        /// Shows the panel by moving it to its original position.
+        /// </summary>
         public void ShowPanel()
         {
             OnShowPanelStart?.Invoke();
@@ -52,6 +132,9 @@ namespace Efekan.Systems.PanelController
                 });
         }
 
+        /// <summary>
+        /// Hides the panel by moving it off-screen.
+        /// </summary>
         public void HidePanel()
         {
             OnHidePanelStart?.Invoke();
@@ -63,6 +146,9 @@ namespace Efekan.Systems.PanelController
                 });
         }
 
+        /// <summary>
+        /// Scales the panel in from zero to its full size.
+        /// </summary>
         public void ScaleIn()
         {
             OnScaleInStart?.Invoke();
@@ -75,6 +161,9 @@ namespace Efekan.Systems.PanelController
                 });
         }
 
+        /// <summary>
+        /// Scales the panel out from its full size to zero.
+        /// </summary>
         public void ScaleOut()
         {
             OnScaleOutStart?.Invoke();
@@ -86,6 +175,9 @@ namespace Efekan.Systems.PanelController
                 });
         }
 
+        /// <summary>
+        /// Fades the panel in by increasing its alpha to 1.
+        /// </summary>
         public void FadeIn()
         {
             OnFadeInStart?.Invoke();
@@ -98,6 +190,9 @@ namespace Efekan.Systems.PanelController
                 });
         }
 
+        /// <summary>
+        /// Fades the panel out by decreasing its alpha to 0.
+        /// </summary>
         public void FadeOut()
         {
             OnFadeOutStart?.Invoke();
