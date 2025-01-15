@@ -108,8 +108,14 @@ namespace Efekan.Systems.PanelController
 
         private void Awake()
         {
-            if (canvasGroup == null) canvasGroup = gameObject.AddComponent<CanvasGroup>();
-            if (panel == null) panel = GetComponent<RectTransform>();
+            if (panel == null)
+                panel = GetComponent<RectTransform>();
+
+            if (canvasGroup == null)
+                canvasGroup = panel.GetComponent<CanvasGroup>();
+
+            if (canvasGroup == null)
+                canvasGroup = panel.gameObject.AddComponent<CanvasGroup>();
 
             // Store the panel's original position.
             originalPosition = panel.anchoredPosition;
